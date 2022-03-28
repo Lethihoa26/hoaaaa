@@ -1,0 +1,70 @@
+#include<iostream>
+#include<iomanip>
+using namespace std;
+class GV{
+    private:
+        char ten[30];
+        int tuoi;
+        char bangcap[15];
+        char chuyennganh[20];
+        float luong;
+    public:
+        void nhap(){
+            cin.ignore();
+            cout << "\nNhap ho ten: ";
+            cin.getline(ten,30);
+            cout << "\nNhap tuoi: ";
+            cin >> tuoi;
+            cin.ignore();
+            cout << "\nNhap bang cap: ";
+            cin.getline(bangcap,15);
+            cout << "\nNhap chuyen nganh: ";
+            cin.getline(chuyennganh,20);
+            cout << "\nNhap he so luong: ";
+            cin >> luong;
+            
+        }
+        void tieude(){
+            cout << setw(20) << "Ho ten" ;
+            cout << setw(10) << "Tuoi" ;
+            cout << setw(15) << "Bang cap" ;
+            cout << setw(20) << "Chuyen nganh" ;
+            cout << setw(15) << "He so luong";
+            cout << setw(15) << "Luong can ban"<< endl;
+        }
+        void xuat(){
+            cout << setw(20) << ten;
+            cout << setw(10) << tuoi;
+            cout << setw(15) << bangcap ;
+            cout << setw(20) << chuyennganh ;
+            cout << setw(15) << luong;
+            cout << setw(15) << luong*610 << endl;
+        }
+        float getluong(){	//ham lay luong o private ra public
+        	return luong;
+        }
+};
+int main(){
+    GV a[10000];
+    int n;
+    cout << "\nNhap so nhan vien: ";
+    cin >> n;
+    cout << "\n\t---Nhap thong tin giao vien---\n";
+    for(int i=0;i<n;i++){
+        cout << "\nGiao vien thu: "<< i+1 << endl;
+        a[i].nhap();
+    }
+    cout << "\n\t---Thong tin giao vien---\n";
+    a[n].tieude();
+    for(int i=0;i<n;i++){
+        a[i].xuat();
+    }
+    cout << "\n\t---Giao vien co tien luong nho hon 2000--\n";
+    a[n].tieude();
+    for(int i=0;i<n;i++){
+        if((a[i].getluong()*610) < 2000){
+            a[i].xuat();
+        }
+    }
+    return 0;
+}
