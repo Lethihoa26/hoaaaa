@@ -1,3 +1,83 @@
+//bai 1
+#include<iostream>
+#include<iomanip>
+using namespace std;
+class KH{
+    private:
+        char hoten[30];
+        struct NS{
+            int ngay,thang,nam;
+        };
+        NS a;
+        char cmt[10];
+        char hokhau[50];
+    public:
+        void nhap(){
+            cin.ignore();
+            cout << "\nNhap ho ten: ";
+            cin.getline(hoten,30);
+            do{
+                cout << "\nNhap ngay sinh: ";
+                cin >> a.ngay;
+            } while(a.ngay > 31 || a.ngay < 0);
+            do{
+                cout << "\nNhap thang sinh: ";
+                cin >> a.thang;
+            } while(a.thang > 12 || a.thang <0);
+            cout << "\nNhap nam sinh: ";
+            cin >> a.nam;
+            fflush(stdin);
+            cout << "\nNhap so chung minh thu: ";
+            cin.getline(cmt,10);
+            cout << "\nNhap ho khau: ";
+            cin.getline(hokhau,50);
+        }
+        void tieude(){
+            cout << setw(20) << left << "HO TEN";
+            cout << setw(25) << left << "NGAY THANG NAM SINH";
+            cout << setw(25) << left << "SO CHUNG MINH THU";
+            cout << setw(30) << left << "HO KHAU" << endl;
+        }
+        void xuat(){
+            cout << setw(20) << left << hoten;
+            cout << setw(2) << left << a.ngay << setw(1) << left << "/" << setw(2) << left << a.thang  << setw(1) << left << "/"  << setw(19) << left << a.nam;
+            cout << setw(25) << left << cmt;
+            cout << setw(30) << left << hokhau << endl;
+        }
+        int getthang(){
+            return a.thang;
+        }
+        void sinhnhat(){
+            if(getthang()== 12){
+                xuat();
+            }
+        }
+        int getten(){
+            return hoten;
+        }
+};
+int main(){
+    KH a[1000];
+    int n;
+    cout << "\nNhap so khach hang: ";
+    cin >> n;
+    for(int i=0;i<n;i++){
+        cout << "\n\tKhach hang thu " << i+1 ;
+        a[i].nhap();
+    }
+    cout << "\n\t---DANH SACH KHACH HANG---\n";
+    a[n].tieude();
+    for(int i=0;i<n;i++){
+        a[i].xuat();
+    }
+    cout << "\n\t---DANH SACH KHACH HANG SINH NHAT THANG 12---\n";
+    a[n].tieude();
+    for(int i=0;i<n;i++){
+        a[i].sinhnhat();
+    }
+    return 0;
+}
+/*bai 2
 #include<iostream>
 #include<iomanip>
 using namespace std;
@@ -67,4 +147,4 @@ int main(){
         }
     }
     return 0;
-}
+}*/
